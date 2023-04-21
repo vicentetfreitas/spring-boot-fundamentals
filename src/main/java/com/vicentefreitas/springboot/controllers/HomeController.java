@@ -1,4 +1,4 @@
-package com.vicentefreitas.springboot.controller;
+package com.vicentefreitas.springboot.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +9,8 @@ public class HomeController {
 			
 	@RequestMapping("/")
 	public String index(Model model) {
-	model.addAttribute("msnBemVindo", "Bem vindo à biblioteca!");
-	return "publica-index";
+	model.addAttribute("msnWelcome", "Welcome to the bookstore!");
+	return "publish-index";
 	
 	}
 
