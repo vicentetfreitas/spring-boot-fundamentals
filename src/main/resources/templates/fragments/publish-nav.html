@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bookstore</title>
+
+	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<nav th:fragment="nav" class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Biblioteca</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/usuarios/novo">Cadastrar</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Usuários</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/popper/popper.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>

@@ -12,11 +12,11 @@
 </head>
 
 <body>
+	<div th:replace="fragments/publish-nav :: nav"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<h2 th:text="${msnWelcome}"></h2>
-				<a class="btn btn-primary" href="/usuarios/novo" >Novo usuário</a>
 			</div>
 		</div>
 	</div>
