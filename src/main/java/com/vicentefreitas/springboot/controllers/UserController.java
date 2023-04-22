@@ -37,4 +37,11 @@ public class UserController {
 		 return "redirect:/usuarios/novo";
 		
 	}
+	
+	@RequestMapping("/admin/listar")
+	public String listUser(Model model) {
+		model.addAttribute("users", userRepository.findAll());
+		return "/auth/admin/admin-list-user";
+	}
 }
+	

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lista de usuários</title>
+
+	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<div th:replace="fragments/publish-nav :: nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Lista de usuários</h1>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>CPF</th>
+							<th>Nascimento</th>
+							<th>E-mail</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${users.empty}">
+							<td colspan="2">Sem usuários</td>
+						</tr>
+						<tr th:each="user : ${users}">
+							<td><span th:text="${user.name}"> Nome </span></td>
+							<td><span th:text="${user.cpf}"> Cpf </span></td>
+							<td><span th:text="${#dates.format(user.dateBirth, 'dd/MM/yyyy')}"> Nascimento </span></td>
+							<td><span th:text="${user.email}"> E-mail </span></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/popper/popper.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
