@@ -1,5 +1,7 @@
 package com.vicentefreitas.springboot.controllers;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +54,31 @@ public class UserController {
 		userRepository.delete(user);
 	    return "redirect:/usuarios/admin/listar";
 	}
+	
+	@GetMapping("/editar/{id}")
+	public String editUser(@PathVariable("id") long id, Model model) {
+		Optional<User> userOld = userRepository.findById(id);
+		if (!userOld.isPresent()) {
+            throw new IllegalArgumentException("Usuário inválido:" + id);
+        } 
+		User user = userOld.get();
+	    model.addAttribute("user", user);
+	    return "/auth/user/user-alter-user";
+
+	}
+	
+	@PostMapping("/editar/{id}")
+	public String editUser(@PathVariable("id") long id, 
+			@Valid User user, BindingResult result) {
+		if (result.hasErrors()) {
+			user.setId(id);
+	        return "/auth/user/admin-list-user";
+	    }
+	    userRepository.save(user);
+	    return "redirect:/usuarios/admin/listar";
+	}
+
+	
 
 }
 	
