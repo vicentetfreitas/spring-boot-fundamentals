@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lista de usuários</title>
+
+	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<div th:replace="fragments/publish-nav :: nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Atribuir papeis</h1>
+				<form action="#"
+					th:action="@{/usuarios/editarPapel/{id}(id=${user.id})}"
+					th:object="${user}" method="post">
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Nome:</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" th:field="*{name}"
+								disabled>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">CPF:</label>
+						<div class="col-sm-3">
+							<input class="form-control" type="text" th:field="*{cpf}"
+								disabled>
+						</div>
+					</div>
+
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Nascimento:</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="text"
+								th:field="*{dateBirth}" disabled>
+						</div>
+					</div>
+
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Email:</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" th:field="*{email}"
+								disabled>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Login:</label>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" th:field="*{login}"
+								disabled>
+						</div>
+					</div>					
+
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Papéis:</label>
+						<div class="col-sm-2">
+							<th:block th:each="pp : ${listPapers}">								
+								<div th:if="${#lists.contains(user.papers, pp)}" class="form-check">
+										<input class="form-check-input" type="checkbox" name="pps"
+										th:value="${pp.id}" checked/> 
+									<label class="form-check-label" th:text="${pp.paper}"></label>
+								</div>
+								<div th:unless="${#lists.contains(user.papers, pp)}" class="form-check">
+										<input class="form-check-input" type="checkbox" name="pps"
+										th:value="${pp.id}"/> 
+									<label class="form-check-label" th:text="${pp.paper}"></label>
+								</div>
+							</th:block>	
+						</div>						
+					</div>
+
+					<input class="btn btn-primary" type="submit" value="Alterar" />
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/popper/popper.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>

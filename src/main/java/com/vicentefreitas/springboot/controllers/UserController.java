@@ -112,5 +112,20 @@ public class UserController {
 
 		return "redirect:/usuarios/admin/listar";
 	}
+	
+	@GetMapping("/editarPapel/{id}")
+	public String selectPaper(@PathVariable("id") Long id, Model model) throws IllegalAccessException {
+		
+		Optional<User> userOld = userRepository.findById(id);
+		
+		if(!userOld.isPresent()) {
+			throw new IllegalAccessException("Usuário inválido " + id);
+		}
+		
+		User user = userOld.get();
+		model.addAttribute("user", user);
+		model.addAttribute("listPapers", paperRepository.findAll());
+		return "/auth/admin/admin-edit-paper-user";
+	}
 
 }
