@@ -22,17 +22,26 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<form action="#" method="post">
+				
+				
+				<div class="alert alert-danger alert-dismissible fade show"
+					th:if="${param.error}">
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+					<span>Senha ou usuário inválido</span>
+				</div>
+
+				
+				<form th:action="@{/login}" method="post">
 
 					<div class="row mb-3">
 						<label class="col-sm-1 col-form-label">Usuário:</label>
 						<div class="col-sm-3">
-							<input class="form-control" type="text">
+							<input class="form-control" type="text" name="username">
 						</div>
 					</div>
 
 					<div class="row mb-3">
-						<label class="col-sm-1 col-form-label">Senha:</label>
+						<label class="col-sm-1 col-form-label" name="password">Senha:</label>
 						<div class="col-sm-3">
 							<input class="form-control" type="text">
 						</div>
