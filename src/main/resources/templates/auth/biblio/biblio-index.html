@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Index Bibliotecário</title>
+
+	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+	<style>
+		.message {
+			color: red;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div th:replace="fragments/publish-nav :: nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Bibliotecário</h1>
+
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/popper/popper.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>

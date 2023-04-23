@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bookstore</title>
+
+	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+	<style>
+		.message {
+			color: red;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div th:insert="fragments/publish-nav :: nav"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<form action="#" method="post">
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Usuário:</label>
+						<div class="col-sm-3">
+							<input class="form-control" type="text">
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<label class="col-sm-1 col-form-label">Senha:</label>
+						<div class="col-sm-3">
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<input class="btn btn-primary" type="submit" value="Entrar" />
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/popper/popper.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
