@@ -36,6 +36,12 @@
 							<td><span th:text="${#dates.format(user.dateBirth, 'dd/MM/yyyy')}"> Nascimento </span></td>
 							<td><span th:text="${user.email}"> E-mail </span></td>
 							<td>
+								<th:block th:each="pp : ${user.papers}">
+									<span th:text="${pp.paper}"> Papel </span><br />
+								</th:block>
+							</td>
+
+							<td>
 								<a class="btn btn-outline-danger btn-sm"
 									th:href="@{/usuarios/admin/apagar/{id}(id=${user.id})}"
 									th:data-confirm-delete="|Você gostaria de apagar ${user.name}?|"
@@ -51,7 +57,6 @@
 								<a class="btn btn-outline-warning btn-sm "
 									th:href="@{/usuarios/editarPapel/{id}(id=${user.id})}">Pápeis</a>
 							</td>
-
 						</tr>
 					</tbody>
 				</table>

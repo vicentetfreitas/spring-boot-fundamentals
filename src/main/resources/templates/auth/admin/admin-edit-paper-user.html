@@ -8,6 +8,11 @@
 	<title>Lista de usuários</title>
 
 	<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+<style>
+.message {
+	color: red;
+}
+</style>
 
 </head>
 
@@ -79,7 +84,11 @@
 									<label class="form-check-label" th:text="${pp.paper}"></label>
 								</div>
 							</th:block>	
-						</div>						
+						</div>					
+						<div class="col-sm-5">
+							<span class="message" th:if="${message}" th:text="${message}"></span>
+						</div>					
+	
 					</div>
 
 					<input class="btn btn-primary" type="submit" value="Alterar" />
