@@ -154,6 +154,7 @@ public class UserController {
 			if (userOptional.isPresent()) {
 				User usr = userOptional.get();
 				usr.setPapers(papers); // relaciona papéis ao usuário
+				usr.setActive(user.isActive());
 				userRepository.save(usr);
 	        }			
 		}		

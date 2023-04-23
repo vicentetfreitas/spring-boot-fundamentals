@@ -35,6 +35,12 @@
 							<td><span th:text="${user.cpf}"> Cpf </span></td>
 							<td><span th:text="${#dates.format(user.dateBirth, 'dd/MM/yyyy')}"> Nascimento </span></td>
 							<td><span th:text="${user.email}"> E-mail </span></td>
+
+							<td>
+								<span th:text="${user.active} ? 'ATIVO' : 'NÃO ATIVO'"> Ativo? </span>
+							</td>
+
+
 							<td>
 								<th:block th:each="pp : ${user.papers}">
 									<span th:text="${pp.paper}"> Papel </span><br />
