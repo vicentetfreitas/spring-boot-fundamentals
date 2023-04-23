@@ -1,25 +1,29 @@
 package com.vicentefreitas.springboot.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "User")
@@ -53,6 +57,10 @@ public class User implements Serializable{
 	@NotEmpty(message = "O login deve ser informado")
 	@Size(min = 4, message="O login dever te no mínimo 4 caracteres")
 	private String login;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable( name = "user_paper", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name="paper_id"))
+	private List<Paper> papers = new ArrayList<>();
 	
 	private boolean active;
 	
@@ -133,6 +141,16 @@ public class User implements Serializable{
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	
+	
+	public List<Paper> getPapers() {
+		return papers;
+	}
+
+	public void setPapers(List<Paper> papers) {
+		this.papers = papers;
 	}
 
 	@Override
